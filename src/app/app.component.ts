@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router, RouterOutlet, RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common'; // <-- required for *ngFor and *ngIf
+import { AuthService } from './auth.service';
 
 interface MenuItem {
   icon: string;
@@ -18,6 +19,9 @@ interface MenuItem {
 })
 export class AppComponent {
 
+
+constructor(private router: Router,
+  public auth: AuthService){}
   title='';
   menuItems: MenuItem[] = [
     { icon: 'home', label: 'Home', route: '/home' },
@@ -25,5 +29,9 @@ export class AppComponent {
     //  { icon: 'info', label: 'Template', route: '/template' },
   ];
 
+  logout() {
+    this.auth.logout();  // remove user from localStorage
+    this.router.navigate(['/login']);
+  }
 
 }

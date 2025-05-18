@@ -1,0 +1,53 @@
+<!-- <div class="p-6 max-w-md mx-auto">
+  <h2 class="text-xl font-bold mb-4">Login</h2>
+  <input [(ngModel)]="username" placeholder="Username" class="block mb-2 border p-2 w-full" />
+  <input [(ngModel)]="password" placeholder="Password" type="password" class="block mb-2 border p-2 w-full" />
+  <button (click)="login()" class="bg-blue-600 text-white px-4 py-2">Login</button>
+  <p *ngIf="error" class="text-red-600 mt-2">{{ error }}</p>
+  <p class="mt-4">
+  Don't have an account?
+  <a [routerLink]="['/signup']" class="text-blue-600">Sign up</a>
+</p>
+
+</div> -->
+
+<div
+    class="bg-gradient-to-r from-[#F28383] from-10% via-[#9D6CD2] via-30% to-[#481EDC] to-90% flex items-center justify-center h-screen">
+    <div class="max-w-[960px] black-dark grid grid-cols-2 items-center gap-20 p-5 rounded-2xl">
+        <div class="relative rounded-2xl">
+            <img src="signup-background.svg" alt="" />
+            <img src="teamwork.svg" alt="" class="absolute top-36" />
+        </div>
+
+        <div class="max-w-80 grid gap-5">
+            <h1 class="text-5xl font-bold text-white">Login</h1>
+            <p class="text-dull-white"></p>
+            <form (ngSubmit)="login()" class="space-y-6 text-white">
+                <div class="relative">
+                    <div
+                        class="absolute top-1 left-1 bg-white-medium rounded-full p-2 flex items-center justify-center text-blue-300">
+                        <i class="fa-solid fa-envelope-open"></i>
+                    </div>
+                    <input ngModel name="username" [(ngModel)]="username" placeholder="Username"
+                        class="w-80 bg-white-light py-2 px-12 rounded-full focus:bg-black-dark focus:outline-none focus:ring-1 focus:ring-neon-blue focus:drop-shadow-lg" />
+                </div>
+                <div class="relative">
+                    <div
+                        class="absolute top-1 left-1 bg-white-medium rounded-full p-2 flex items-center justify-center text-blue-300">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <input ngModel name="password" [(ngModel)]="password" type="password" placeholder="Password"
+                        class="w-80 bg-white-light py-2 px-12 rounded-full focus:bg-black-dark focus:outline-none focus:ring-1 focus:ring-neon-blue focus:drop-shadow-lg z-3" />
+                </div>
+                <button type="submit"
+                    class="bg-gradient-to-r from-blue-400 to-cyan-200 w-80 font-semibold rounded-full py-2">Sign
+                    in</button>
+            </form>
+            <div class="text-dull-white border-t border-white-light pt-4 space-y-4 text-sm">
+                <p>Don't have an account? <a routerLink="/signup"
+                        class="text-neon-blue font-semibold cursor-pointer">Sign up</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
