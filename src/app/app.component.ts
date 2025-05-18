@@ -1,12 +1,29 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet, RouterModule } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common'; // <-- required for *ngFor and *ngIf
+
+interface MenuItem {
+  icon: string;
+  label: string;
+  route: string;
+}
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [CommonModule, RouterOutlet, RouterModule, MatIconModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'resume-builder';
+
+  title='';
+  menuItems: MenuItem[] = [
+    { icon: 'home', label: 'Home', route: '/home' },
+    { icon: 'info', label: 'About', route: '/about' },
+    //  { icon: 'info', label: 'Template', route: '/template' },
+  ];
+
+
 }

@@ -1,0 +1,22 @@
+/* app.component.css or global styles (e.g., styles.css) */
+
+/* Ensure that the body and html take the full height */
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Navbar specific styles */
+nav {
+  position: fixed;   /* Keeps the navbar fixed */
+  width: 100%;       /* Full width */
+  top: 0;            /* Fixed to top */
+  left: 0;           /* Align to left */
+  z-index: 10;       /* Ensures navbar is on top */
+}
+
+/* Content area that starts below the navbar */
+.pt-24 {
+  padding-top: 6rem; /* Adjust based on the navbar height */
+}
