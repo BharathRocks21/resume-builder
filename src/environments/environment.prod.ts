@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'https://resume-backend-utyr.onrender.com/auth'
+  apiBaseUrl: 'https://resume-builder-backend-qmwq.onrender.com/auth'
 };

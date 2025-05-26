@@ -23,11 +23,6 @@ export const routes: Routes = [
     loadComponent: () => import('./template/template.component').then(m => m.TemplateComponent),
   },
   {
-    path: 'api-setup',
-    canActivate: [authGuard],
-    loadComponent: () => import('./api-setup/api-setup.component').then(m => m.ApiSetupComponent),
-  },
-  {
     path: 'resume-builder',
     canActivate: [authGuard],
     loadComponent: () => import('./resume-builder/resume-builder.component').then(m => m.ResumeBuilderComponent),

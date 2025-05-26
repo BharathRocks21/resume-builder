@@ -119,7 +119,7 @@ export class ResumeBuilderComponent {
       fd.append('coverImage', this.coverImage);
     }
 
-    this.http.post('https://resume-backend-utyr.onrender.com/generate-resume', fd, { responseType: 'text' as 'text' })
+    this.http.post('https://resume-builder-backend-qmwq.onrender.com/generate-resume', fd, { responseType: 'text' as 'text' })
       .subscribe(html => {
         const resumeHtml: string = html;
         const popup = window.open('', '_blank');
@@ -235,7 +235,7 @@ export class ResumeBuilderComponent {
       fd.append('coverImage', this.coverImage);
     }
 
-    this.http.post('https://resume-backend-utyr.onrender.com/generate-resume', fd, { responseType: 'text' as 'text' })
+    this.http.post('https://resume-builder-backend-qmwq.onrender.com/generate-resume', fd, { responseType: 'text' as 'text' })
       .subscribe(html => {
         const resumeHtml: string = html;
 
