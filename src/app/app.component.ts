@@ -3,6 +3,7 @@ import { Router, RouterOutlet, RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common'; // <-- required for *ngFor and *ngIf
 import { AuthService } from './auth.service';
+import { HttpClientModule } from '@angular/common/http';
 
 interface MenuItem {
   icon: string;
@@ -26,7 +27,6 @@ constructor(private router: Router,
   menuItems: MenuItem[] = [
     { icon: 'home', label: 'Home', route: '/home' },
     { icon: 'info', label: 'About', route: '/about' },
-    //  { icon: 'info', label: 'Template', route: '/template' },
   ];
 
   logout() {

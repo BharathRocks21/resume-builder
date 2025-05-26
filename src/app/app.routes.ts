@@ -1,17 +1,3 @@
-// import { Routes } from '@angular/router';
-// import { HomeComponent } from './home/home.component';
-// import { AboutComponent } from './about/about.component';
-// import { TemplateComponent } from './template/template.component';
-// import { ResumeBuilderComponent } from './resume-builder/resume-builder.component';
-
-// export const appRoutes: Routes = [
-//   { path: '', redirectTo: 'home', pathMatch: 'full' }, // Redirect root to home
-//   { path: 'home', component: HomeComponent },
-//   { path: 'about', component: AboutComponent },
-//   { path: 'template', component: TemplateComponent },
-//   { path: 'resume-builder', component: ResumeBuilderComponent }
-// ];
-
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login.component';
 import { SignupComponent } from './pages/signup.component';
@@ -35,6 +21,11 @@ export const routes: Routes = [
     path: 'template',
     canActivate: [authGuard],
     loadComponent: () => import('./template/template.component').then(m => m.TemplateComponent),
+  },
+  {
+    path: 'api-setup',
+    canActivate: [authGuard],
+    loadComponent: () => import('./api-setup/api-setup.component').then(m => m.ApiSetupComponent),
   },
   {
     path: 'resume-builder',

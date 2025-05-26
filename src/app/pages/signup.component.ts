@@ -13,23 +13,15 @@ import { AuthService } from '../auth.service';
 export class SignupComponent {
   username = '';
   password = '';
-  confirm='';
-  error = '';
-  success = '';
+  confirm = '';
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(private auth: AuthService) {}
 
   signup() {
-if (this.password !== this.confirm) {
-      alert('Passwords do not match'); return;
+    if (this.password !== this.confirm) {
+      alert('Passwords do not match');
+      return;
     }
-
-    const res = this.auth.register({ username: this.username, password: this.password });
-    if (res) {
-      this.success = 'Registered successfully! Please log in.';
-      this.router.navigate(['/login']);
-    } else {
-      this.error = 'User already exists.';
-    }
+    this.auth.signup({ username: this.username, password: this.password });
   }
 }

@@ -1,41 +1,51 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from '../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private readonly USER_KEY = 'auth_user';
+  private baseUrl = environment.apiBaseUrl; // Update if hosted elsewhere
+  private TOKEN_KEY = 'auth_token';
 
-  constructor(private router: Router) {}
-
-  login(user: { username: string; password: string }): boolean {
-    const storedUsers = JSON.parse(localStorage.getItem('users') || '[]');
-    const match = storedUsers.find((u: any) =>
-      u.username === user.username && u.password === user.password
-    );
-
-    if (match) {
-      localStorage.setItem(this.USER_KEY, JSON.stringify(user));
-      return true;
-    }
-    return false;
-  }
-
-  register(user: { username: string; password: string }): boolean {
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
-    const exists = users.find((u: any) => u.username === user.username);
-    if (exists) return false;
-
-    users.push(user);
-    localStorage.setItem('users', JSON.stringify(users));
-    return true;
-  }
+  constructor(private http: HttpClient, private router: Router) {}
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem(this.USER_KEY);
+    return !!localStorage.getItem(this.TOKEN_KEY);
   }
 
-  logout(): void {
-    localStorage.removeItem(this.USER_KEY);
+  getToken(): string | null {
+    return localStorage.getItem(this.TOKEN_KEY);
+  }
+
+  logout() {
+    localStorage.removeItem(this.TOKEN_KEY);
     this.router.navigate(['/login']);
+  }
+
+  login(user: { username: string; password: string }) {
+    return this.http.post<{ access_token: string }>(`${this.baseUrl}/login`, user)
+      .subscribe({
+        next: res => {
+          localStorage.setItem(this.TOKEN_KEY, res.access_token);
+          this.router.navigate(['/home']);
+        },
+        error: err => {
+          alert(err.error.message || 'Login failed');
+        }
+      });
+  }
+
+  signup(user: { username: string; password: string }) {
+    return this.http.post(`${this.baseUrl}/signup`, user)
+      .subscribe({
+        next: () => {
+          alert('Signup successful! Please login.');
+          this.router.navigate(['/login']);
+        },
+        error: err => {
+          alert(err.error.message || 'Signup failed');
+        }
+      });
   }
 }

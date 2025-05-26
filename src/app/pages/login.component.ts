@@ -10,19 +10,14 @@ import { AuthService } from '../auth.service';
   imports: [CommonModule, FormsModule ,RouterModule],
   templateUrl: './login.component.html',
 })
+
 export class LoginComponent {
   username = '';
   password = '';
-  error = '';
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(private auth: AuthService) {}
 
   login() {
-    const success = this.auth.login({ username: this.username, password: this.password });
-    if (success) {
-      this.router.navigate(['/home']);
-    } else {
-      this.error = 'Invalid credentials';
-    }
+    this.auth.login({ username: this.username, password: this.password });
   }
 }
